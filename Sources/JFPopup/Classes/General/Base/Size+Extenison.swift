@@ -44,19 +44,49 @@ public extension JF where Base == CGFloat {
 extension CGSize: JFCompatible {}
 public extension JF where Base == CGSize {
     
+    private var version_keyWindow: UIWindow? {
+        if #available(iOS 13.0, *) {
+            let windowScenes = UIApplication.shared.connectedScenes.filter ({ screen in
+                guard let wc = screen as? UIWindowScene, wc.activationState != .unattached else {
+                    return false
+                }
+                return true
+            }).map { $0 as! UIWindowScene }
+            for wc in windowScenes {
+                if let s = wc.delegate as? UIWindowSceneDelegate, let sw = s.window, let ssw = sw {
+                    return ssw
+                }
+                if #available(iOS 15.0, *) {
+                    if let wck = wc.keyWindow {
+                        return wck
+                    }
+                }
+                if let wck = wc.windows.filter({ $0.isKeyWindow }).first {
+                    return wck
+                }
+            }
+            return nil
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
+    
     static func screenBounds() -> CGRect {
+        if let w = CGSize().jf.version_keyWindow {
+            return w.frame
+        }
         return UIScreen.main.bounds
     }
     
     static func screenSize() -> CGSize {
-        return UIScreen.main.bounds.size
+        return screenBounds().size
     }
     
     static func screenWidth() -> CGFloat {
-        return UIScreen.main.bounds.size.width
+        return screenSize().width
     }
     
     static func screenHeight() -> CGFloat {
-        return UIScreen.main.bounds.size.height
+        return screenSize().height
     }
 }
