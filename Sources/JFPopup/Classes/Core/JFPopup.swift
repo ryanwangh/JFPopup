@@ -4,7 +4,7 @@
 //
 //  Created by 逸风 on 2021/10/9.
 //
-import JRBaseKit
+
 import UIKit
 
 fileprivate let supportDynamicIsLandList = [

@@ -41,9 +41,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/JFPopup/Classes/**/*'
   
   s.swift_version = ['4.0']
-  
-  s.dependency 'JRBaseKit', '~> 1.1.1'
-  
+    
    s.resource_bundles = {
      'JFPopup' => ['Sources/JFPopup/Resources/*.png'],
    }

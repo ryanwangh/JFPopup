@@ -325,12 +325,10 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JFPopup_Example/Pods-JFPopup_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JFPopup/JFPopup.framework",
-				"${BUILT_PRODUCTS_DIR}/JRBaseKit/JRBaseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JFPopup.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JRBaseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
