@@ -106,6 +106,7 @@ open class JFPopupController: UIViewController,JFPopupDataSource {
         let navi = UINavigationController.init(rootViewController: self)
         navi.transitioningDelegate = self
         navi.modalPresentationStyle = .custom
+        navi.view.frame = CGSize.jf.screenBounds()
         self.isShow = true
         vc.present(navi, animated: true) {
         }
